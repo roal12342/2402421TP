@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Hide : MonoBehaviour
 {
-    private Renderer hideSpike;  // 박스 블록의 Renderer
+    private Renderer hide;  // 오브젝트의 Renderer
 
     void Start()
     {
-        hideSpike = GetComponent<Renderer>();
+        hide = GetComponent<Renderer>();
 
-        // 초기 상태에서 박스 블록을 보이지 않게 설정
-        hideSpike.enabled = false;
+        // 초기 상태에서 오브젝트를 보이지 않게 설정
+        hide.enabled = false;
     }
 
     // 플레이어와 충돌
@@ -20,8 +20,8 @@ public class Hide : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")  // 충돌한 객체 이름이 "Player"일 때
         {
-            // 박스 블록을 보이게 설정
-            hideSpike.enabled = true;
+            // 오브젝트를 보이게 설정
+            hide.enabled = true;
         }
     }
 }
