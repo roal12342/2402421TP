@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BlockMoveRight : MonoBehaviour
+{
+    public PlayerMove player;
+    public float moveDistance = 1.3f;
+    public float detectionDistance = 2f;
+    private bool hasMoved = false;
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (player != null && !hasMoved)
+        {
+            Vector2 playerPosition = player.GetCurrentPosition();
+
+            if (playerPosition.x > 7.5 && playerPosition.y < 4.5)
+            {
+                MoveRight();
+            }
+        }
+    }
+
+    void MoveRight()
+    {
+        transform.position += Vector3.right * moveDistance;
+        hasMoved = true;
+    }
+}
