@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class BlockMoveLeft : MonoBehaviour
 {
-    public PlayerMove player;
-    public float moveDistance = 1.3f;
-    public float detectionDistance = 2f;
-    private bool hasMoved = false;
+    public PlayerMove player;  //PlayerMove스크립트 가져오기
+    public float moveDistance = 1.3f;  //이동거리 설정
+    public float detectionDistance = 2f;  //플레이어와의 사이거리 설정
+    private bool hasMoved = false;   //블럭 움직였는지 여부
 
-    // Update is called once per frame
     void Update()
     {
-        if (player != null && !hasMoved)
+        if (player != null && !hasMoved)  //플레이어가 있고, 블럭 안움직였으면
         {
-            Vector2 playerPosition = player.GetCurrentPosition();
+            Vector2 playerPosition = player.GetCurrentPosition();  //플레이어 좌표 가져오기
 
-            if (playerPosition.x>7.5 && playerPosition.y<4.5)
+            if (playerPosition.x>7.5 && playerPosition.y<4.5)  //플레이어 x좌표가 7.5 초과, y좌표가 4.5 미만 
             {
                 MoveLeft();
             }
         }
     }
 
-    void MoveLeft()
+    void MoveLeft() //블럭 왼쪽이동
     {
         transform.position += Vector3.left * moveDistance;
         hasMoved = true;
