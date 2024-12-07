@@ -19,11 +19,11 @@ public class PlayerMove : MonoBehaviour
     public float jumpPower;  //플레이어 점프력
     public bool playerFall = false;  //플레이어 낙사
     public bool playerDie = false;  //플레이어 사망
-    public bool timeOver = false;  //타임오버시 사망
+    public bool timeOver = false;  //타임오버시 사망, TimeDirector 스크립트에서 조정
 
     public AudioSource audioSource;     
-    public AudioClip jumpClip;          
-    public AudioClip DieClip;     
+    public AudioClip jumpClip;        //점프 사운드  
+    public AudioClip DieClip;          // 사망 사운드
 
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
@@ -70,10 +70,10 @@ public class PlayerMove : MonoBehaviour
             rigid.velocity = Vector2.zero;
             StartCoroutine(PauseAndResume(2f));
         }
-        if (timeOver)
+        if (timeOver) //타임오버시
         {
-            timeOver = false;
-            audioSource.PlayOneShot(DieClip);
+            timeOver = false; //타임오버 사운드 중복 안되게
+            audioSource.PlayOneShot(DieClip); //사망 사운드
         }
     }
     IEnumerator PauseAndResume(float pauseDuration)
@@ -156,3 +156,4 @@ public class PlayerMove : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
+
